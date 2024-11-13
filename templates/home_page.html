@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BuBMuM</title>
 </head>
 <body>
 
@@ -23,6 +23,30 @@
     <img src="static/image_10.jpg" alt="Image 10" class="slide">
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const brandName = 'BuBMuM';
+    const effects = ['speaking', 'happy', 'sad'];
+    let currentIndex = 0;
+
+    function animateTitle() {
+        let animatedTitle = '';
+        for (let i = 0; i < brandName.length; i++) {
+            if (i === currentIndex) {
+                const effect = effects[Math.floor(Math.random() * effects.length)];
+                animatedTitle += `(${brandName[i]})`; // You can use different characters to represent effects
+            } else {
+                animatedTitle += brandName[i];
+            }
+        }
+        document.title = animatedTitle;
+        currentIndex = (currentIndex + 1) % brandName.length;
+    }
+
+    setInterval(animateTitle, 500); // Change effect every 500ms
+});
+</script>
 
 </body>
 <footer>{% include 'footer.html' %}</footer>
