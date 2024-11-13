@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuBMuM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .letter {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .letter:nth-child(odd) {
+            color: #FF69B4; /* Pink for odd letters */
+        }
+
+        .letter:nth-child(even) {
+            color: #1E90FF; /* Blue for even letters */
+        }
+
+        .letter:hover {
+            animation: bounce 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .speaking {
+            animation: speak 0.5s ease infinite;
+        }
+
+        @keyframes speak {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .happy {
+            animation: rotate 0.5s ease infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .sad {
+            animation: shake 0.5s ease infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body>
+    <header class="py-3 mb-3 border-bottom">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="static/baby.png" class="bi me-2" width="40" height="32" alt="Baby icon">
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
+                    <li><a class="dropdown-item" href="#">Pregnancy Exercise Planner</a></li>
+                    <li><a class="dropdown-item" href="#">Pregnancy Meals Planner</a></li>
+                    <li><a class="dropdown-item" href="#">Health Checkup Planner</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Discussion - forums</a></li>
+                    <li><a class="dropdown-item" href="#">Recommend Products</a></li>
+                </ul>
+            </div>
+
+            <div class="brand-name">
+                <span class="letter">B</span>
+                <span class="letter">u</span>
+                <span class="letter">B</span>
+                <span class="letter">M</span>
+                <span class="letter">u</span>
+                <span class="letter">M</span>
+            </div>
+
+            <div class="flex-shrink-0 dropdown pb-3">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="static/mother.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li><a class="dropdown-item" href="#">LogIN</a></li>
+                    <li><a class="dropdown-item" href="#">SignUP</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                    <li><a class="dropdown-item" href="#">Partner with us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const letters = document.querySelectorAll('.letter');
+            const effects = ['speaking', 'happy', 'sad'];
+
+            setInterval(() => {
+                letters.forEach(letter => {
+                    letter.className = 'letter'; // Reset class
+                    if (Math.random() < 0.3) { // 30% chance to apply an effect
+                        const effect = effects[Math.floor(Math.random() * effects.length)];
+                        letter.classList.add(effect);
+                    }
+                });
+            }, 2000); // Change effects every 2 seconds
+        });
+    </script>
+</body>
+</html>
